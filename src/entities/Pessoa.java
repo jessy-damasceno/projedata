@@ -34,6 +34,6 @@ public class Pessoa {
 
   @Override
   public String toString() {
-    return "Nome: " + nome + ", data de nascimento: " + dataNascimento.format(formatters);
+    return "Nome: " + nome + ", Data de nascimento: " + dataNascimento.format(formatters);
   }
 }

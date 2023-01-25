@@ -10,14 +10,9 @@ public class Funcionario extends Pessoa {
 
   public Funcionario() {}
 
-  public Funcionario(BigDecimal salario, String funcao) {
-    this.salario = salario;
-    this.funcao = funcao;
-  }
-
-  public Funcionario(String nome, LocalDate dataNascimento, BigDecimal salario, String funcao) {
-    super(nome, dataNascimento);
-    this.salario = salario;
+  public Funcionario(String nome, int ano, int mes, int dia, double salario, String funcao) {
+    super(nome, LocalDate.of(ano, mes, dia));
+    this.salario = BigDecimal.valueOf(salario);
     this.funcao = funcao;
   }
 
@@ -39,7 +34,7 @@ public class Funcionario extends Pessoa {
 
   @Override
   public String toString() {
-    return super.toString() + ", salário: R$ " + NumberFormat.getCurrencyInstance().format(salario)
-        + ", função: " + funcao;
+    return super.toString() + ", Salário: " + NumberFormat.getCurrencyInstance().format(salario)
+        + ", Função: " + funcao;
   }
 }
