@@ -1,10 +1,13 @@
 package entities;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Pessoa {
-  private String nome;
-  private LocalDate dataNascimento;
+  protected String nome;
+  protected LocalDate dataNascimento;
+
+  private static DateTimeFormatter formatters = DateTimeFormatter.ofPattern("dd/MM/uuuu");
 
   public Pessoa() {}
 
@@ -31,6 +34,6 @@ public class Pessoa {
 
   @Override
   public String toString() {
-    return "Pessoa [nome=" + nome + ", dataNascimento=" + dataNascimento + "]";
+    return "Nome: " + nome + ", data de nascimento: " + dataNascimento.format(formatters);
   }
 }
