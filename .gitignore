@@ -1,4 +1,5 @@
-bin/
+bin
+!.vscode/settings.json
 .mtj.tmp/
 *.class
 *.jar
@@ -6,5 +7,5 @@ bin/
 *.ear
 *.nar
 hs_err_pid*
-.vscode/
+.vscode/*
 .code-workspace
