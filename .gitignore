@@ -1,11 +1,7 @@
-bin
-!.vscode/settings.json
-.mtj.tmp/
+bin/
+.vscode/
 *.class
 *.jar
 *.war
 *.ear
 *.nar
-hs_err_pid*
-.vscode/*
-.code-workspace
