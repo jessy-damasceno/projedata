@@ -1,0 +1,5 @@
+package enums;
+
+public enum funcao {
+  OPERADOR, COORDENADOR, DIRETOR, RECEPCIONISTA, CONTADOR, ELETRICISTA, GERENTE
+}
