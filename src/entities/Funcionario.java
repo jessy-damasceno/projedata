@@ -32,9 +32,13 @@ public class Funcionario extends Pessoa {
     this.funcao = funcao;
   }
 
+  public void aumentarSalario() {
+    this.salario = salario.add(BigDecimal.valueOf(0.1 * salario.doubleValue()));
+  }
+
   @Override
   public String toString() {
-    return super.toString() + ", Salário: " + NumberFormat.getCurrencyInstance().format(salario)
-        + ", Função: " + funcao;
+    return "[ " + super.toString() + ", Salário: "
+        + NumberFormat.getCurrencyInstance().format(salario) + ", Função: " + funcao + "]";
   }
 }
