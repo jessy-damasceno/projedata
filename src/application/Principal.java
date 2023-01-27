@@ -65,9 +65,17 @@ public class Principal {
     System.out.println("3.6 – Imprimir os funcionários, agrupados por função.");
     System.out.println(funcionariosPorFuncao.entrySet());
 
+    // 3.8 – Imprimir os funcionários que fazem aniversário no mês 10 e 12.
+    System.out.println("3.8 – Imprimir os funcionários que fazem aniversário no mês 10 e 12.");
+    System.out
+        .println(
+            funcionarios.stream()
+                .filter(s -> s.getDataNascimento().getMonth().getValue() == 10
+                    || s.getDataNascimento().getMonth().getValue() == 12)
+                .collect(Collectors.toList()));
   }
 
-  // Remove o funcionário e retorna a nova lista (não quis alterar a lista atual)
+  // Remove o funcionário e retorna a nova lista atualizada (não quis alterar a lista atual)
   public static List<Funcionario> removeFuncionario(List<Funcionario> funcionarios,
       Funcionario funcionario) {
     List<Funcionario> novaLista = new ArrayList<>(funcionarios);
@@ -79,7 +87,8 @@ public class Principal {
     return novaLista;
   }
 
-  // Remove o funcionário pelo nome e retorna a nova lista (não quis alterar a lista atual)
+  // Remove o funcionário pelo nome e retorna a nova lista atualizada (não quis alterar a lista
+  // atual)
   public static List<Funcionario> removeFuncionario(List<Funcionario> funcionarios, String nome) {
     List<Funcionario> novaLista = new ArrayList<>(funcionarios);
     novaLista.removeIf(s -> s.getNome().equals(nome));
