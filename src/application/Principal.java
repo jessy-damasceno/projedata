@@ -94,7 +94,15 @@ public class Principal {
     Funcionario maisVelho = funcionarios.get(0);
     System.out.println("Nome: " + maisVelho.getNome() + ", Idade: " + maisVelho.getAge());
 
+    System.out.println();
+
     // 3.10 – Imprimir a lista de funcionários por ordem alfabética.
+    List<Funcionario> sortedList =
+        funcionarios.stream().sorted((arg0, arg1) -> arg0.getNome().compareTo(arg1.getNome()))
+            .collect(Collectors.toList());
+
+    System.out.println("3.10 – Imprimir a lista de funcionários por ordem alfabética.");
+    sortedList.forEach(System.out::println);
   }
 
 
