@@ -36,9 +36,13 @@ public class Funcionario extends Pessoa {
     this.salario = salario.add(BigDecimal.valueOf(0.1 * salario.doubleValue()));
   }
 
+  public static String formatSalario(BigDecimal salario) {
+    return NumberFormat.getCurrencyInstance().format(salario);
+  }
+
   @Override
   public String toString() {
-    return "[ " + super.toString() + ", Salário: "
-        + NumberFormat.getCurrencyInstance().format(salario) + ", Função: " + funcao + "]";
+    return "[ " + super.toString() + ", Salário: " + formatSalario(salario) + ", Função: " + funcao
+        + "]";
   }
 }

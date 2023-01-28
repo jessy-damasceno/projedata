@@ -2,6 +2,7 @@ package application;
 
 import entities.Funcionario;
 import enums.funcao;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -97,12 +98,21 @@ public class Principal {
     System.out.println();
 
     // 3.10 – Imprimir a lista de funcionários por ordem alfabética.
-    List<Funcionario> sortedList =
+    List<Funcionario> listaOrdenadaFuncionarios =
         funcionarios.stream().sorted((arg0, arg1) -> arg0.getNome().compareTo(arg1.getNome()))
             .collect(Collectors.toList());
 
     System.out.println("3.10 – Imprimir a lista de funcionários por ordem alfabética.");
-    sortedList.forEach(System.out::println);
+    listaOrdenadaFuncionarios.forEach(System.out::println);
+
+    System.out.println();
+
+    // 3.11 – Imprimir o total dos salários dos funcionários.
+    BigDecimal somaSalarios =
+        funcionarios.stream().map(x -> x.getSalario()).reduce(BigDecimal.ZERO, BigDecimal::add);
+
+    System.out.println("3.11 – Imprimir o total dos salários dos funcionários.");
+    System.out.println(Funcionario.formatSalario(somaSalarios));
   }
 
 
