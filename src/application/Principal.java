@@ -3,6 +3,8 @@ package application;
 import entities.Funcionario;
 import enums.funcao;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -61,9 +63,13 @@ public class Principal {
     Map<String, List<Funcionario>> funcionariosPorFuncao =
         funcionarios.stream().collect(Collectors.groupingBy(Funcionario::getFuncao));
 
+    System.out.println();
+
     // 3.6 – Imprimir os funcionários, agrupados por função.
     System.out.println("3.6 – Imprimir os funcionários, agrupados por função.");
     System.out.println(funcionariosPorFuncao.entrySet());
+
+    System.out.println();
 
     // 3.8 – Imprimir os funcionários que fazem aniversário no mês 10 e 12.
     System.out.println("3.8 – Imprimir os funcionários que fazem aniversário no mês 10 e 12.");
@@ -73,7 +79,24 @@ public class Principal {
                 .filter(s -> s.getDataNascimento().getMonth().getValue() == 10
                     || s.getDataNascimento().getMonth().getValue() == 12)
                 .collect(Collectors.toList()));
+
+    System.out.println();
+
+    // 3.9 – Imprimir o funcionário com a maior idade, exibir os atributos: nome e idade.
+    System.out.println(
+        "3.9 – Imprimir o funcionário com a maior idade, exibir os atributos: nome e idade.");
+
+    Comparator<Funcionario> comparatorAsc =
+        (func1, func2) -> func1.getDataNascimento().compareTo(func2.getDataNascimento());
+
+    Collections.sort(funcionarios, comparatorAsc);
+
+    Funcionario maisVelho = funcionarios.get(0);
+    System.out.println("Nome: " + maisVelho.getNome() + ", Idade: " + maisVelho.getAge());
+
+    // 3.10 – Imprimir a lista de funcionários por ordem alfabética.
   }
+
 
   // Remove o funcionário e retorna a nova lista atualizada (não quis alterar a lista atual)
   public static List<Funcionario> removeFuncionario(List<Funcionario> funcionarios,

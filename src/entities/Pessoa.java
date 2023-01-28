@@ -1,6 +1,7 @@
 package entities;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 public class Pessoa {
@@ -26,6 +27,10 @@ public class Pessoa {
 
   public LocalDate getDataNascimento() {
     return dataNascimento;
+  }
+
+  public int getAge() {
+    return Period.between(dataNascimento, LocalDate.now()).getYears();
   }
 
   public void setDataNascimento(LocalDate dataNascimento) {
