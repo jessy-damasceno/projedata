@@ -109,7 +109,7 @@ public class Principal {
 
     // 3.11 – Imprimir o total dos salários dos funcionários.
     BigDecimal somaSalarios =
-        funcionarios.stream().map(x -> x.getSalario()).reduce(BigDecimal.ZERO, BigDecimal::add);
+        funcionarios.stream().map(Funcionario::getSalario).reduce(BigDecimal.ZERO, BigDecimal::add);
 
     System.out.println("3.11 – Imprimir o total dos salários dos funcionários.");
     System.out.println(Funcionario.formatSalario(somaSalarios));
