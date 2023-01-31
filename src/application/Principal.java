@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 public class Principal {
   public static void main(String[] args) {
+    final BigDecimal SALARIO_MINIMO = BigDecimal.valueOf(1212.00);
     // 3.1 Inserir todos os funcionários, na mesma ordem e informações da tabela acima.
     List<Funcionario> funcionarios = new ArrayList<>();
 
@@ -93,7 +94,8 @@ public class Principal {
     Collections.sort(funcionarios, comparatorAsc);
 
     Funcionario maisVelho = funcionarios.get(0);
-    System.out.println("Nome: " + maisVelho.getNome() + ", Idade: " + maisVelho.getAge());
+    System.out
+        .println("Nome: " + maisVelho.getNome() + ", Idade: " + maisVelho.getAge() + " anos.");
 
     System.out.println();
 
@@ -103,16 +105,26 @@ public class Principal {
             .collect(Collectors.toList());
 
     System.out.println("3.10 – Imprimir a lista de funcionários por ordem alfabética.");
-    listaOrdenadaFuncionarios.forEach(System.out::println);
+    imprimirTodosFuncionarios(listaOrdenadaFuncionarios);
 
     System.out.println();
 
     // 3.11 – Imprimir o total dos salários dos funcionários.
-    BigDecimal somaSalarios =
+    BigDecimal somaDosSalarios =
         funcionarios.stream().map(Funcionario::getSalario).reduce(BigDecimal.ZERO, BigDecimal::add);
 
     System.out.println("3.11 – Imprimir o total dos salários dos funcionários.");
-    System.out.println(Funcionario.formatSalario(somaSalarios));
+    System.out.println(Funcionario.formatSalario(somaDosSalarios) + "\n");
+
+    // 3.12 – Imprimir quantos salários mínimos ganha cada funcionário, considerando que o salário
+    // mínimo é R$1212.00.
+    System.out.println(
+        "3.12 – Imprimir quantos salários mínimos ganha cada funcionário, considerando que o salário mínimo é R$1212.00.");
+
+    for (Funcionario funcionario : funcionarios) {
+      System.out.println(funcionario.getNome() + " recebe "
+          + funcionario.salariosMinimos(SALARIO_MINIMO) + " salário(s) mínimo(s).");
+    }
   }
 
 

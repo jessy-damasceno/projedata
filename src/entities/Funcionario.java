@@ -40,6 +40,10 @@ public class Funcionario extends Pessoa {
     return NumberFormat.getCurrencyInstance().format(salario);
   }
 
+  public int salariosMinimos(BigDecimal arg) {
+    return salario.divideToIntegralValue(arg).intValue();
+  }
+
   @Override
   public String toString() {
     return "[ " + super.toString() + ", Salário: " + formatSalario(salario) + ", Função: " + funcao
